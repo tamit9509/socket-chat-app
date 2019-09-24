@@ -1,0 +1,41 @@
+<div class="container-fluid h-100">
+  <div class="row justify-content-center h-100">
+    <div class="col-md-12 col-xl-6 chat">
+      <h3 class="text-center mt-5">Login</h3>
+      <div class="form-container">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group control-container">
+            <input type="email" formControlName="email" class="form-control mx-auto" placeholder="Enter email" />
+            <div *ngIf="isSubmitted && loginForm.invalid" class="error mx-auto">
+              <span
+                *ngIf="controls.email.invalid && controls.email.errors.required">{{CONSTANTS.FORM_ERRORS.REQUIRED.EMAIL}}</span>
+              <span
+                *ngIf="controls.email.invalid && controls.email.errors.email">{{CONSTANTS.FORM_ERRORS.INVALID.EMAIL}}</span>
+            </div>
+          </div>
+
+          <div class="form-group control-container">
+            <input type="password" formControlName="password" class="form-control mx-auto" placeholder="Password" />
+            <div *ngIf="isSubmitted && loginForm.invalid" class="error mx-auto">
+              <span
+                *ngIf="controls.password.invalid && controls.password.errors.required">{{CONSTANTS.FORM_ERRORS.REQUIRED.PASSWORD}}</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mr-5">New user?
+              <a [routerLink]="['/register']" class="link">register here</a>
+            </div>
+            <a [routerLink]="['/forgot-password']" class="link ml-5">Forgot Password?</a>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
